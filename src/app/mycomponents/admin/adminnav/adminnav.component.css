@@ -1,0 +1,24 @@
+#adminnav{
+    background-color:#772B00;
+    color:white;
+    display:flex;
+    justify-content: space-evenly;
+}
+#adminnav>div{
+    padding:10px;
+}
+#adminnav>div:hover{
+    cursor:pointer;
+    background-color:#FF9B00;
+}
+
+#adminnav>div.active{
+    background-color:#FF9B00;
+}
+
+@media (max-width:768px){
+    #adminnav{
+        display:block;
+        max-width: 150px;
+    }
+}

@@ -1,0 +1,59 @@
+<div id="profile">
+    <div id="headimage">
+        <img src="http://img2.rtve.es/i/?w=1600&i=1532377323377.jpg">
+    </div>
+    <div id="content" class="pt-4 pb-4" style="height:1900px;">
+        <div class="container">
+            <div *ngIf="showform == false" class="row">
+                <div class="col-md-3 infos">
+                    <div *ngIf="showprofile == true" id="profileimage">
+                            <img *ngIf="myprofile.photo != null" src="{{uploaddir}}profileimages/{{myprofile.photo}}" alt="" (click)="modifyprofile()">
+                            <img *ngIf="myprofile.photo == null" src="{{uploaddir}}timg.png" alt="" (click)="modifyprofile()">
+                    
+                    </div>
+                    <div *ngIf="showprofile == true" class="text-center">
+                        <strong>{{myprofile.name}}</strong>
+                        <div>
+                            <small>{{me.registration}}</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div *ngFor="let item of allarticles;let key = index">
+                        <div [routerLink]="['/onearticle', item.id]" class="mb-3 onearticle">{{item.title}}</div>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="showform == true" class="row justify-content-center">
+                <div class="col-12 col-md-6">
+                    <h3 class="mb-3 text-center">Modifier mon profil</h3>
+                    <div *ngIf="msgalert != ''" class="mt-1 mb-1">
+                        <span [innerHTML]="msgalert"></span>
+                    </div>
+                    <form #imageForm=ngForm (ngSubmit)="OnSubmit(Caption,Image)">
+                        <div class="mb-2">
+                            <input type="text" class="form-control"  #Caption ngModel name="Caption" id="Caption" required>
+                        </div>
+                        <div class="custom-file mb-2">
+                            <input type="file" #Image accept="Image/*" name="Image" id="Image"  (change)="handleFileInput($event.target.files)" required>
+                        </div>
+                        <div class="row mb-2">
+                            <div *ngIf="imageurl != ''" class="col-12 col-md-6">
+                                <img [src]="imageurl" alt="" class="img-fluid">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <button type="submit" class="btn btn-primary" [disabled]="Caption.value == '' || Image.value == ''">Modifier</button>
+                            </div>
+                            <div class="col-6 text-right">
+                                <button type="button" class="btn btn-outline-secondary" (click)="goback()">Quitter</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>

@@ -1,0 +1,49 @@
+<div id="onearticle" class="pt-2">
+    <div *ngIf="showarticle == true" class="container">
+        <div class="row">
+            <div class="col-md-9 pr-3">
+                <h2 class="text-primary mb-2">{{article.title}}</h2>
+                <img *ngIf="article.photo != null" src="{{uploaddir}}articleimages/{{article.photo}}">
+                <div class="mt-3 mb-1">
+                    <span innerHTML="{{article.content}}"></span>
+                </div>
+                <div class="text-right">
+                    <small>{{article.created}}</small>
+                </div>
+                <div class="row comments mt-5">
+                    <div *ngIf="isconnected == true" class="col-12 mb-3">
+                        <form (ngSubmit)="onsubmit()">
+                            <div class="form-group">
+                                <textarea class="form-control" id="exampleFormControlTextarea1" [(ngModel)]="mycomment" name="mycomment" rows="1" placeholder="poster un commentaire"></textarea>
+                            </div>
+                            <div class="text-right">
+                                <button type="submit" class="btn btn-primary btn-sm" [disabled]="mycomment == ''">Envoyer</button>
+                            </div>
+                          </form>
+                    </div>
+                    <div class="col-12">
+                        <div *ngFor="let item of allcomments" class="mb-3">
+                            <strong>{{item.user}}</strong><br>
+                            {{item.content}}<br>
+                            <small style="font-size:10px;">{{item.created}}</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="mb-2">
+                    <img src="https://tpc.googlesyndication.com/simgad/9908620725442704140" class="img-fluid">
+                </div>
+                <div class="mb-2">
+                    <img src="https://tpc.googlesyndication.com/simgad/1979267029826441509" class="img-fluid">
+                </div>
+                <div class="mb-2">
+                    <img src="https://i.stack.imgur.com/GMGHD.png" class="img-fluid">
+                </div>
+                <div class="mb-2">
+                    <img src="https://tpc.googlesyndication.com/simgad/17151761623747917053" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

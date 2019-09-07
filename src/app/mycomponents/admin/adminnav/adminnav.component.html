@@ -1,0 +1,17 @@
+<div id="adminnav">
+    <div>
+        <a>Users</a>
+    </div>
+    <div routerLink="/admin/article" [ngClass]="{'active': fatherpage=='adminarticle'}">
+        <a>Articles</a>
+    </div>
+    <div>
+        <a>Commentaires</a>
+    </div>
+    <div routerLink="/admin/image" [ngClass]="{'active': fatherpage=='adminimage'}">
+        <a>Images</a>
+    </div>
+    <div>
+        <a>Videos</a>
+    </div>
+</div>

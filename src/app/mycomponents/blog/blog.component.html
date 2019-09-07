@@ -1,0 +1,40 @@
+<div id="blog">
+    <div class="mynav mb-5">
+        Bienvenue sur mon blog
+    </div>
+    <div class="container p-3">
+        <div class="row pl-3 pr-3">
+            <div class="col-12 col-md-8 mb-5">
+                <div *ngIf="showarticles == true">
+                    <div *ngFor="let item of allarticles">
+                        <div class="onearticle">
+                            <h4 [routerLink]="['/onearticle', item.id]">{{item.title}}</h4>
+                            <div class="text-right">
+                                <small>{{item.created}}</small>
+                            </div>
+                        </div>
+                        <hr>  
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-4">
+                <div class="mb-5">
+                    <full-calendar defaultView="dayGridMonth" [plugins]="calendarPlugins"></full-calendar>
+                </div>
+                <div class="mb-5 usefullinks">
+                    <h5 class="">Liens utiles</h5>
+                    <div class="myhr"></div>
+                    <div *ngIf="usefullinks != ''">
+                        <div *ngFor="let item of usefullinks">
+                            <a class="btn btn-link" href="{{item.link}}" target="_blank">{{item.name}}</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-5">
+                    <h5 class="">Rechercher dans ce blog</h5>
+                    <div class="myhr"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

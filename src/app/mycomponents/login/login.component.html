@@ -1,0 +1,73 @@
+<div id="login">
+    <div id="forms">
+            <div id="loginform" [ngClass]="{'form': section=='login', 'form  d-none': section!='login'}">
+                <div class="h5">
+                    Connexion
+                </div>
+                    
+                <div *ngIf="connectionmsg != ''" class="mt-1 mb-1 text-danger">
+                    {{connectionmsg}}
+                </div>
+                    
+                <form [formGroup]="loginForm">
+                    <span *ngIf="(loginForm.controls['email'].dirty || loginForm.controls['email'].touched) && loginForm.controls['email'].invalid" class="text-danger">
+                        <small *ngIf="loginForm.controls['email'].errors.required" class="text-danger">Le mail</small>
+                        <small *ngIf="loginForm.controls['email'].errors.email" class="text-danger">Format incorrect</small>
+                    </span>
+                    <div class="mb-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="16" viewBox="0 0 12 16" class="mr-1"><path fill-rule="evenodd" fill="rgba(57, 61, 82, 0)" stroke="gray" d="M12 14.002a.998.998 0 0 1-.998.998H1.001A1 1 0 0 1 0 13.999V13c0-2.633 4-4 4-4s.229-.409 0-1c-.841-.62-.944-1.59-1-4 .173-2.413 1.867-3 3-3s2.827.586 3 3c-.056 2.41-.159 3.38-1 4-.229.59 0 1 0 1s4 1.367 4 4v1.002z"/></svg>
+                        <input type="text" name="email" formControlName="email" placeholder="votre mail" autocomplete="email" required>
+                    </div>
+                    <span *ngIf="(loginForm.controls['password'].dirty || loginForm.controls['password'].touched) && loginForm.controls['password'].invalid" class="text-danger">
+                        <small *ngIf="loginForm.controls['password'].errors.required" class="text-danger">Le mot de passe</small>
+                        <small *ngIf="loginForm.controls['password'].errors.minlength" class="text-danger">5 caractères au moins</small>
+                    </span>
+                    <div class="mb-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="16" viewBox="0 0 14 16" class="mr-1"><path fill-rule="evenodd" fill="rgba(57, 61, 82, 0)" stroke="gray" d="M12 6c0-.55-.45-1-1-1h-1V4c0-2.2-1.8-4-4-4S2 1.8 2 4v1H1c-.55 0-1 .45-1 1v7c0 .55.45 1 1 1h5v-1H2V6h9v2h1V6zM8.21 5V4c0-1.22-.98-2.2-2.2-2.2-1.22 0-2.2.98-2.2 2.2v1h4.4zM12 12h2v2h-2v2h-2v-2H8v-2h2v-2h2v2zm-9 0h1v-1H3v1zm0-5h1v1H3V7zm1 2H3v1h1V9z"/></svg>
+                        <input type="password" name="password" formControlName="password" placeholder="votre mot de passe" autocomplete="password" required>
+                    </div>
+                    <input type="hidden" name="action" value="connexionform">
+                    <button type="submit" class="btn" [disabled]="loginForm.invalid" (click)="login()">Se connecter</button>
+
+                    <div class="text-light">
+                        <small>Bienvenue</small>
+                    </div>
+                </form>
+            </div>
+
+            <div id="logupform" [ngClass]="{'form': section=='logup', 'form d-none': section!='logup'}">
+                <div class="h5">
+                    Inscription
+                </div>
+                    
+                <div *ngIf="registrationmsg != ''" class="mt-1 mb-1">
+                    <span [innerHTML]="registrationmsg"></span>
+                </div>
+                    
+                <form [formGroup]="logupForm">
+                    <span *ngIf="(logupForm.controls['email'].dirty || logupForm.controls['email'].touched) && logupForm.controls['email'].invalid" class="text-danger">
+                        <small *ngIf="logupForm.controls['email'].errors.required" class="text-danger">Le mail</small>
+                        <small *ngIf="logupForm.controls['email'].errors.email" class="text-danger">Format incorrect</small>
+                    </span>
+                    <div class="mb-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="16" viewBox="0 0 12 16" class="mr-1"><path fill-rule="evenodd" fill="rgba(57, 61, 82, 0)" stroke="gray" d="M12 14.002a.998.998 0 0 1-.998.998H1.001A1 1 0 0 1 0 13.999V13c0-2.633 4-4 4-4s.229-.409 0-1c-.841-.62-.944-1.59-1-4 .173-2.413 1.867-3 3-3s2.827.586 3 3c-.056 2.41-.159 3.38-1 4-.229.59 0 1 0 1s4 1.367 4 4v1.002z"/></svg>
+                        <input type="text" name="email" formControlName="email" placeholder="votre mail" autocomplete="email" required>
+                    </div>
+                    <span *ngIf="(logupForm.controls['password'].dirty || logupForm.controls['password'].touched) && logupForm.controls['password'].invalid" class="text-danger">
+                        <small *ngIf="logupForm.controls['password'].errors.required" class="text-danger">Le mot de passe</small>
+                        <small *ngIf="logupForm.controls['password'].errors.minlength" class="text-danger">5 caractères au moins</small>
+                    </span>
+                    <div class="mb-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="16" viewBox="0 0 14 16" class="mr-1"><path fill-rule="evenodd" fill="rgba(57, 61, 82, 0)" stroke="gray" d="M12 6c0-.55-.45-1-1-1h-1V4c0-2.2-1.8-4-4-4S2 1.8 2 4v1H1c-.55 0-1 .45-1 1v7c0 .55.45 1 1 1h5v-1H2V6h9v2h1V6zM8.21 5V4c0-1.22-.98-2.2-2.2-2.2-1.22 0-2.2.98-2.2 2.2v1h4.4zM12 12h2v2h-2v2h-2v-2H8v-2h2v-2h2v2zm-9 0h1v-1H3v1zm0-5h1v1H3V7zm1 2H3v1h1V9z"/></svg>
+                        <input type="password" name="password" formControlName="password" placeholder="votre mot de passe" autocomplete="password" required>
+                    </div>
+                    <input type="hidden" name="action" value="registrationform">
+                    <button type="submit" class="btn" [disabled]="logupForm.invalid" (click)="logup()">S'inscrire</button>
+
+                    <div class="text-light">
+                        <small>Bienvenue</small>
+                    </div>
+                </form>
+            </div>
+    </div>
+</div>
