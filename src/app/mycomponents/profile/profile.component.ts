@@ -27,7 +27,7 @@ export class ProfileComponent implements OnInit {
     }else{
       this.uploaddir = this.myapi.uploaddir$.getValue()[0];
       this.getProfile();
-      this.getAllArticles();
+      this.getMesArticles();
     }
   }
 
@@ -80,8 +80,15 @@ export class ProfileComponent implements OnInit {
     reader.readAsDataURL(this.filetoupload);
   }
 
-  getAllArticles(){
-    this.myapi.myGet("getallarticles").subscribe((data)=>{
+  getMesArticles(){
+    var user = this.myapi.getCookie("user");
+    this.me = JSON.parse(user);
+    user = JSON.parse(user);
+    var email = user["email"];
+    var query = {
+      "email":email
+    };
+    this.myapi.login(query,"getmesarticles").subscribe((data)=>{
       if(data != null && Object.keys(data).length !== 0){
         this.allarticles = data["response"];
       }

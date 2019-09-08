@@ -32,4 +32,8 @@ export class AppComponent implements OnInit{
     this.myapi.showadmin$.next([false]);
     this.router.navigate(['/']);
   }
+
+  changenavtitle(title){
+    this.navtitle = title;
+  }
 }

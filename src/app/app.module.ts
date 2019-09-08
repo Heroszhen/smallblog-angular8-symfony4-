@@ -18,6 +18,7 @@ import { OnearticleComponent } from './mycomponents/onearticle/onearticle.compon
 import { AdminnavComponent } from './mycomponents/admin/adminnav/adminnav.component';
 import { AdminarticleComponent } from './mycomponents/admin/adminarticle/adminarticle.component';
 import { AdminimageComponent } from './mycomponents/admin/adminimage/adminimage.component';
+import { VideoComponent } from './mycomponents/video/video.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { AdminimageComponent } from './mycomponents/admin/adminimage/adminimage.
     OnearticleComponent,
     AdminnavComponent,
     AdminarticleComponent,
-    AdminimageComponent
+    AdminimageComponent,
+    VideoComponent
   ],
   imports: [
     BrowserModule,

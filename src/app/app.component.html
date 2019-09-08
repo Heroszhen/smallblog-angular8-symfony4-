@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-  <a class="navbar-brand" href="#" routerLink="/blog">Blog</a>
+  <a class="navbar-brand" href="#" (click)="changenavtitle('blog')" routerLink="/blog">Blog</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -10,7 +10,7 @@
         <a class="nav-link" href="#">Images</a>
       </li>
       <li [ngClass]="{'nav-item active': navtitle=='videos', 'nav-item': navtitle != 'videos'}">
-        <a class="nav-link" href="#">Videos</a>
+        <a (click)="changenavtitle('videos')" routerLink="/video" class="nav-link" href="#">Videos</a>
       </li>
       <li [ngClass]="{'nav-item active': navtitle=='subjects', 'nav-item': navtitle != 'subjects'}">
         <a class="nav-link" href="#">Sujets</a>
@@ -24,11 +24,11 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <div *ngIf="isconnected == true && showadmin === true">
-            <a routerLink="/admin/article" class="dropdown-item" href="#">Admin</a>
+            <a (click)="changenavtitle('admin')" routerLink="/admin/article" class="dropdown-item" href="#">Admin</a>
           </div>
-          <a *ngIf="isconnected != true" [routerLink]="['/login', 1]" class="dropdown-item" href="#">Se connecter</a>
-          <a [routerLink]="['/login', 2]" class="dropdown-item" href="#">S'inscrire</a>
-          <a routerLink="/profile" class="dropdown-item" href="#" *ngIf="isconnected == true">Profil</a>
+          <a *ngIf="isconnected != true" (click)="changenavtitle('log')" [routerLink]="['/login', 1]" class="dropdown-item" href="#">Se connecter</a>
+          <a *ngIf="isconnected != true" (click)="changenavtitle('log')" [routerLink]="['/login', 2]" class="dropdown-item" href="#">S'inscrire</a>
+          <a (click)="changenavtitle('profile')" routerLink="/profile" class="dropdown-item" href="#" *ngIf="isconnected == true">Profil</a>
           <a class="dropdown-item" href="#" *ngIf="isconnected == true" (click)="logout()">Se déconnecter</a>
         </div>
       </li>

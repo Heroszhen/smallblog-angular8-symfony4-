@@ -6,6 +6,7 @@ import { ProfileComponent } from './mycomponents/profile/profile.component';
 import { OnearticleComponent } from './mycomponents/onearticle/onearticle.component';
 import { AdminarticleComponent } from './mycomponents/admin/adminarticle/adminarticle.component';
 import { AdminimageComponent } from './mycomponents/admin/adminimage/adminimage.component';
+import { VideoComponent } from './mycomponents/video/video.component';
 
 const routes: Routes = [
   { path: '', component: BlogComponent },
@@ -14,7 +15,8 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent },
   { path: 'onearticle/:id', component: OnearticleComponent },
   { path: 'admin/article', component: AdminarticleComponent },
-  { path: 'admin/image', component: AdminimageComponent }
+  { path: 'admin/image', component: AdminimageComponent },
+  { path: 'video', component: VideoComponent },
 ];
 
 @NgModule({

@@ -132,4 +132,20 @@ class ArticleController extends AbstractController
             "data" => $allarticles2
         ]);
     }
+
+    /**
+     * @Route("/getmesarticles")
+     */
+    public function getMesArticles(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $data=json_decode($request->getContent(),true);
+        $user = $em->getRepository(User::class)->findOneBy(["email"=>$data["email"]]);
+        $allarticles = $em->getRepository(Article::class)->findBy(["user"=>$user],['id'=>'DESC']);
+        $allarticles2 = array();
+        foreach($allarticles as $onearticle)array_push($allarticles2,$onearticle->toArray());
+        return $this->json([
+            "response" => $allarticles2
+        ]);
+    }
 }
