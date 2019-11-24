@@ -5,13 +5,16 @@
     <div routerLink="/admin/article" [ngClass]="{'active': fatherpage=='adminarticle'}">
         <a>Articles</a>
     </div>
-    <div>
+    <div routerLink="/admin/comment" [ngClass]="{'active': fatherpage=='admincomment'}">
         <a>Commentaires</a>
     </div>
     <div routerLink="/admin/image" [ngClass]="{'active': fatherpage=='adminimage'}">
         <a>Images</a>
     </div>
-    <div>
+    <div routerLink="/admin/video" [ngClass]="{'active': fatherpage=='adminvideo'}">
         <a>Videos</a>
+    </div>
+    <div routerLink="/admin/sujet" [ngClass]="{'active': fatherpage=='adminsubject'}">
+        <a>Sujets</a>
     </div>
 </div>

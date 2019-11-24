@@ -19,11 +19,11 @@
 }
 
 #blog .onearticle{
+    padding:5px;
     width:100%;
 }
 
 #blog .onearticle:hover{
-    padding:5px;
     background-color:rgb(240,240,240);
 }
 

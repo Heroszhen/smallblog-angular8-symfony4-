@@ -11,6 +11,7 @@ export class MyapiService {
   isconnected$ = new BehaviorSubject([]);
   uploaddir$ = new BehaviorSubject(["http://localhost:8888/blogapi/public/images/"]);
   showadmin$ = new BehaviorSubject([]);
+  page$ = new BehaviorSubject([]);
   constructor(private http:HttpClient) { }
   
   checkConnection(){
@@ -42,7 +43,7 @@ export class MyapiService {
 
   //cookies
   setCookie(name,valuejson){
-    document.cookie = name+"="+JSON.stringify(valuejson);  
+    document.cookie = name+"="+JSON.stringify(valuejson)+"; path=/";  
     //JSON.stringify(valuejson)
     }
     

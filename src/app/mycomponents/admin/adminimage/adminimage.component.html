@@ -9,8 +9,51 @@
         <div class="svgbtnnav">
             <svg (click)="opennav()" class="margin-left:10px;" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 8 16"><path fill-rule="evenodd" d="M8 4v1H0V4h8zM0 8h8V7H0v1zm0 3h8v-1H0v1z"/></svg>
         </div>
-        <div>
-            
+        <div class="pt-4">
+                <div class="container-fluid">
+                        <div class="row pt-3">
+                            <div class="col-12 mb-5">
+                                <form (ngSubmit)="addOnePhoto()">
+                                    <div class="mt-1 mb-1">
+                                        <span innerHTLM="msgalert"></span>
+                                    </div>
+                                    <div class="custom-file mb-2">
+                                            <label class="custom-file-label" for="customFile">Choisir une image</label>
+                                            <input type="file" class="custom-file-input" id="customFile" (change)="handleFileInput($event.target.files)">
+                                    </div>      
+                                    <button  type="submit" class="btn btn-primary">Ajouter une image</button>
+                                    
+                                    <div *ngIf="imageurl != ''" class="row justify-content-center mt-3">
+                                        <div class="col-12 col-md-6 text-center">
+                                            <img [src]="imageurl" alt="" class="img-fluid">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col-12">
+                                <table class="table">
+                                    <thead>
+                                      <tr>
+                                        <th scope="col">Id</th>
+                                        <th scope="col">Photo</th>
+                                        <th scope="col">Action</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let item of allimages;let key = index">
+                                            <td>{{item.id}}</td>
+                                            <td>
+                                                <img src="{{uploaddir}}imageimages/{{item.name}}" alt="">
+                                            </td>
+                                            <td>
+                                                <button type="button" (click)="deleteOneImage(key)" class="btn btn-outline-danger btn-sm">Supprimer</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                  </table>
+                            </div>
+                        </div>
+                    </div>
         </div>
     </div>
 </div>

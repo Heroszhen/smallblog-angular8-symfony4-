@@ -68,4 +68,20 @@ class CommentController extends AbstractController
             "data"=>$myarray
         ]);
     }
+
+    /**
+     * @Route("/deleteonecomment")
+     */
+    public function deleteOneArticle(Request $request){
+        $em = $this->getDoctrine()->getManager();
+
+        $data=json_decode($request->getContent(),true);
+        $comment = $em->find(Comment::class,$data["id"]);
+        $em->remove($comment);
+        $em->flush();
+        return $this->json([
+            "response" => "done"
+        ]);
+    }
+
 }

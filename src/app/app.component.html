@@ -7,13 +7,18 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li [ngClass]="{'nav-item active': navtitle=='images', 'nav-item': navtitle != 'images'}">
-        <a class="nav-link" href="#">Images</a>
+        <a (click)="changenavtitle('images')" routerLink="/image" class="nav-link" href="#">Images</a>
       </li>
       <li [ngClass]="{'nav-item active': navtitle=='videos', 'nav-item': navtitle != 'videos'}">
         <a (click)="changenavtitle('videos')" routerLink="/video" class="nav-link" href="#">Videos</a>
       </li>
-      <li [ngClass]="{'nav-item active': navtitle=='subjects', 'nav-item': navtitle != 'subjects'}">
-        <a class="nav-link" href="#">Sujets</a>
+      <li *ngIf="allsubjects != ''" class="nav-item dropdown" >
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Sujets
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a *ngFor="let item of allsubjects" class="dropdown-item" href="#" [routerLink]="['/subject', item.id]">{{item.title}}</a>
+        </div>
       </li>
       <li [ngClass]="{'nav-item active': navtitle=='contact', 'nav-item': navtitle != 'contact'}">
         <a class="nav-link" href="#">Contact</a>

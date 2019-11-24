@@ -1,0 +1,21 @@
+<div id="subject">
+    <div class="container pt-5">
+        <div *ngIf="thesubject != ''" class="row mb-4">
+            <h2 class="col-12">
+                <strong>{{thesubject.title}}</strong>
+            </h2>
+            <div class="col-12">
+                <span [innerHTML]="thesubject.plot"></span>
+            </div>
+        </div>
+
+        <div class="row">
+            <div *ngFor="let text of alltexts;" class="col-12 col-md-4 col-xl-3 onetext">
+                <strong class="h5 title">{{text.title}}</strong>
+                <div class="text-muted h6 mt-1">
+                    <span innerHTML="{{text.content|slice:0:100}}..."></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import { AppComponent,SafePipe } from './app.component';
 
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -19,6 +19,11 @@ import { AdminnavComponent } from './mycomponents/admin/adminnav/adminnav.compon
 import { AdminarticleComponent } from './mycomponents/admin/adminarticle/adminarticle.component';
 import { AdminimageComponent } from './mycomponents/admin/adminimage/adminimage.component';
 import { VideoComponent } from './mycomponents/video/video.component';
+import { ImageComponent } from './mycomponents/image/image.component';
+import { AdmincommentComponent } from './mycomponents/admin/admincomment/admincomment.component';
+import { AdminvideoComponent } from './mycomponents/admin/adminvideo/adminvideo.component';
+import { SubjectComponent } from './mycomponents/subject/subject.component';
+import { AdminsubjectComponent } from './mycomponents/admin/adminsubject/adminsubject.component';
 
 
 @NgModule({
@@ -31,7 +36,13 @@ import { VideoComponent } from './mycomponents/video/video.component';
     AdminnavComponent,
     AdminarticleComponent,
     AdminimageComponent,
-    VideoComponent
+    VideoComponent,
+    SafePipe,
+    ImageComponent,
+    AdmincommentComponent,
+    AdminvideoComponent,
+    SubjectComponent,
+    AdminsubjectComponent
   ],
   imports: [
     BrowserModule,

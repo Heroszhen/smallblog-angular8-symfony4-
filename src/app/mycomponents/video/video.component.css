@@ -1,0 +1,23 @@
+#video #s1 iframe{
+    width:210px;
+    height:118px;
+}
+
+#video #s2 iframe{
+    width:100%;
+    height:450px;
+}
+
+@media (max-width:768px){
+    #video #s2 iframe{
+        width:100%;
+        height:300px;
+    } 
+}
+
+@media (max-width:576px){
+    #video #s2 iframe{
+        width:100%;
+        height:200px;
+    } 
+}

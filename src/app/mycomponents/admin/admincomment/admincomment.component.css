@@ -1,0 +1,5 @@
+#admincomment .onecomment:hover{
+    padding:5px;
+    background:rgba(57, 61, 82, 0.4);
+    border-radius:5px;
+}

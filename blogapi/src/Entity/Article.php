@@ -130,6 +130,7 @@ class Article
         return $myarray;
     }
 
+
     /**
      * @return Collection|Comment[]
      */
@@ -159,5 +160,20 @@ class Article
         }
 
         return $this;
+    }
+
+    public function toArray2(){
+        $myarray = array();
+
+        $myarray["id"] = $this->getId();
+        $myarray["title"] = $this->getTitle();
+        $myarray["created"] = $this->getCreated();
+
+        $array2 = array();
+        foreach ($this->getComments() as $comment){
+            array_push($array2,$comment->toArray());
+        }
+        $myarray["comments"] = $array2;
+        return $myarray;
     }
 }

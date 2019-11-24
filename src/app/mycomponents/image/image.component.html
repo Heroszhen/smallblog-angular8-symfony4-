@@ -1,0 +1,18 @@
+<div id="image">
+    <div *ngIf="bigimageurl != ''" id="bigimage">
+        <div (click)='hidebigimg()' class="text-white h3 p-1">&times;</div>
+        <div class="p-4 text-center">
+                <img [src]="bigimageurl" alt="">
+        </div>
+    </div>
+
+    <div class="container p-3">
+        <div class="row">
+            <div *ngFor="let item of allimages;let key = index" class="col-12 col-md-6 col-lg-4 mb-3 text-center">
+                <div (click)="showbigimg(key)" class="oneimage">
+                    <img src="{{uploaddir}}imageimages/{{item.name}}" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

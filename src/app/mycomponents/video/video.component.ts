@@ -7,10 +7,36 @@ import { MyapiService } from '../../services/myapi.service';
   styleUrls: ['./video.component.css']
 })
 export class VideoComponent implements OnInit {
-  onevideo = "<iframe width='560' height='315' src='https://www.youtube.com/embed/UTusmVpwJXo' frameborder='0' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>"
-  constructor(private myapi:MyapiService) { }
+  onevideo :any;
+  allvideos:any;
+  showvideos:boolean = false;
+  section1:boolean = true;
+  section2:boolean = false;
+  constructor(private myapi:MyapiService) {
+    this.myapi.page$.next(["videos"]);
+    this.getAllVideos();
+  }
 
   ngOnInit() {
   }
 
+  getAllVideos(){
+    this.myapi.myGet("getallvideos").subscribe((data)=>{
+      if(data != null && Object.keys(data).length !== 0){
+        this.allvideos = data["response"];
+        this.showvideos = true;
+      }
+    });
+  }
+
+  showonevideo(key){
+    this.onevideo = this.allvideos[key];
+    this.section1 = false;
+    this.section2 = true;
+  }
+  
+  goback(){
+    this.section1 = true;
+    this.section2 = false;
+  }
 }

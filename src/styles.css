@@ -74,4 +74,10 @@ div.btnnav:hover{
     .svgbtnnav{
         display:block;
     }
+    .adminnav2>div:nth-child(2){
+        width:100%;
+    }
+    .adminnav2>div:nth-child(2)>div:nth-child(2){
+        width:100%;
+    }
 }

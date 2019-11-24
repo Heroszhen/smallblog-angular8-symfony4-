@@ -1,0 +1,89 @@
+<div id="adminvideo" class="adminnav2" (window:resize)="onResize($event)">
+    <div [ngClass]="{'show':(mobileversion == false)||(mobileversion == true && showadminnav == true),'hide':mobileversion == true && showadminnav == false}">
+        <app-adminnav [fatherpage]="page"></app-adminnav>
+        <div (click)="closenav()" class="btnnav">
+            Fermer
+        </div>
+    </div>
+    <div>
+        <div class="svgbtnnav">
+            <svg (click)="opennav()" class="margin-left:10px;" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 8 16"><path fill-rule="evenodd" d="M8 4v1H0V4h8zM0 8h8V7H0v1zm0 3h8v-1H0v1z"/></svg>
+        </div>
+        <div>
+            <div class="container-fluid pt-2">
+                <div class="row">
+                    <div class="col-12 mb-5">
+                        <form  (ngSubmit)="addOneVideo()">
+                            <div *ngIf="msgalert1 != ''" class="mt-1 mb-1">
+                                <span [innerHTML]="msgalert1"></span>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="title">Titre</label>
+                                        <input type="text" class="form-control" id="title" name="title" placeholder="titre" [(ngModel)]="video1.title">    
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="link">Lien</label>
+                                        <input type="text" class="form-control" id="link" name="link" placeholder="Lien" [(ngModel)]="video1.link">    
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label for="plot">Description</label>
+                                        <textarea class="form-control" id="plot" name="plot" [(ngModel)]="video1.plot" rows="3"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <button  [disabled]="video1.title == ''||video1.link == ''||video1.plot == ''" type="submit" class="btn btn-primary">Ajouter une video</button>
+                        </form>
+                    </div>
+                    <div class="col-12">
+                        <table class="table">
+                            <thead class="thead-dark">
+                              <tr>
+                                <th scope="col">Id</th>
+                                <th scope="col">Titre</th>
+                                <th scope="col">Url</th>
+                                <th scope="col">Résumé</th>
+                                <th scope="col">Actions</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr *ngFor="let video of allvideos;let key = index">
+                                <td class="id">{{video.id}}</td>
+                                <td class="title">
+                                    <div class="form-group">  
+                                        <textarea type="text" class="form-control" id="title" name="title"
+                                        placeholder="Entrez titre" rows="4">{{video.title}}</textarea>
+                                    </div>
+                                </td>
+                                <td class="link">
+                                    <div class="form-group">  
+                                        <textarea type="text" class="form-control" id="link" name="link" placeholder="Entrez link"  rows="4">{{video.link}}</textarea>
+                                    </div>
+                                </td>
+                                <td class="plot">
+                                    <div class="form-group">  
+                                        <textarea type="text" class="form-control" id="plot" name="plot" placeholder="Entrez plot"  rows="4">{{video.plot}}</textarea>
+                                    </div>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-outline-success mb-1" (click)="editonevideo($event,key)">Modifier</button>
+                                    <br>
+                                    <button type="button" class="btn btn-outline-danger" (click)="deleteonevideo(key)">Supprimer</button>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

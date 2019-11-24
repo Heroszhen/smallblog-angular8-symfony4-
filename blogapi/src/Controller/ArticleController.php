@@ -148,4 +148,20 @@ class ArticleController extends AbstractController
             "response" => $allarticles2
         ]);
     }
+
+    /**
+     * @Route("/getallcommentsofarticles")
+     */
+    public function getallcommentsofarticles(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $allarticles = $em->getRepository(Article::class)->findBy([],['id'=>'DESC']);
+
+        $allarticles2 = array();
+        foreach($allarticles as $onearticle)array_push($allarticles2,$onearticle->toArray2());
+        return $this->json([
+            "response" => $allarticles2
+        ]);
+    }
 }

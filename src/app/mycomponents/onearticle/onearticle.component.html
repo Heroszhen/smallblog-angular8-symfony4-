@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-md-9 pr-3">
                 <h2 class="text-primary mb-2">{{article.title}}</h2>
-                <img *ngIf="article.photo != null" src="{{uploaddir}}articleimages/{{article.photo}}">
+                <img *ngIf="article.photo != null" src="{{uploaddir}}articleimages/{{article.photo}}" alt="">
                 <div class="mt-3 mb-1">
                     <span innerHTML="{{article.content}}"></span>
                 </div>

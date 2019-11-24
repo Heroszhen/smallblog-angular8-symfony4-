@@ -15,6 +15,7 @@ export class BlogComponent implements OnInit {
   usefullinks:any = "";
   constructor(private myapi:MyapiService,private router:Router) { 
     //this.myapi.checkConnection();
+    this.myapi.page$.next(["blog"]);
     this.getAllArticles();
     this.getUsefullinks();
   }
